@@ -24,9 +24,9 @@ a probability mass function which takes elements of an ambient space of pmf's su
 }
   \item{support}{
 %%     ~~Describe \code{support} here~~
-a vector which consists of the elements of the support of \code{pmf}, i.e. \code{sum(pmf(support, ...)) == 1 && !(0 %in% pmf(support, ...))}
+a vector which consists of the elements of the support of \code{pmf}, i.e. \code{sum(pmf(support, ...)) == 1 && !(0 \%in\% pmf(support, ...))}
 }
-  \item{...}{
+  \item{\dots}{
 an additional argument of \code{pmf}
 }
 }
