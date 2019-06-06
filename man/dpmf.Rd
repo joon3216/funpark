@@ -16,12 +16,15 @@ dpmf(x, pmf_vec, support_vec)
 \arguments{
   \item{x}{
 %%     ~~Describe \code{x} here~~
+a number, or a vector whose class is the same as \code{support_vec}
 }
   \item{pmf_vec}{
 %%     ~~Describe \code{pmf_vec} here~~
+a numeric vector, where each element falls in (0, 1) and sums up to 1
 }
   \item{support_vec}{
 %%     ~~Describe \code{support_vec} here~~
+a vector with the same length as \code{pmf_vec} where each entry of \code{support_vec} is the input that corresponds to the probability in \code{pmf_vec}; if missing, it is replaced with \code{0:(length(pmf_vec) - 1)}.
 }
 }
 \details{
@@ -39,6 +42,7 @@ dpmf(x, pmf_vec, support_vec)
 }
 \author{
 %%  ~~who you are~~
+Junkyu Park
 }
 \note{
 %%  ~~further notes~~
@@ -48,6 +52,7 @@ dpmf(x, pmf_vec, support_vec)
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{rpmf}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
