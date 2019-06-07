@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Junkyu Park
 Maintainer: Junkyu Park <joon3216@gmail.com>
 Description: Collection of functions for composing research materials.
-License: None
+License: MIT License
 URL: https://github.com/joon3216/funpark
 Encoding: UTF-8
 LazyData: true
