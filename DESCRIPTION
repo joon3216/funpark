@@ -1,11 +1,15 @@
 Package: funpark
 Type: Package
 Title: Functions written by Junkyu Park
-Version: 0.1.0
+Version: 0.2.0
 Author: Junkyu Park
 Maintainer: Junkyu Park <joon3216@gmail.com>
 Description: Collection of functions for composing research materials.
 License: MIT License
 URL: https://github.com/joon3216/funpark
+BugReports: https://github.com/joon3216/funpark/issues
 Encoding: UTF-8
 LazyData: true
+Imports:
+    data.table (>= 1.9.6)
+RoxygenNote: 6.1.1
