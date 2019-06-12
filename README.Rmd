@@ -16,9 +16,6 @@ knitr::opts_chunk$set(
 # funpark
 
 <!-- badges: start -->
-[!\[License: MIT\](https://img.shields.io/badge/License-MIT-yellow.svg)](
-    https://opensource.org/licenses/MIT)
-!\[version\](https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000)
 <!-- badges: end -->
 
 
