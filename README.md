@@ -4,10 +4,8 @@ funpark
 =======
 
 <!-- badges: start -->
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](
-    https://opensource.org/licenses/MIT)
-![version](https://img.shields.io/badge/version-0.0.6-blue.svg?cacheSeconds=2592000)
-<!-- badges: end -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![version](https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000) <!-- badges: end --> <!-- badges: end -->
+
 The package is for archiving those functions in [Research materials](https://joon3216.github.io/research_materials) section.
 
 Installation
