@@ -31,7 +31,7 @@ binarize_binom(rich_binom, c('rich', 'not_rich'))
 binarize_binom(rich_binom, c('rich', 'not_rich'), 'is_rich')
 }
 \seealso{
-\code{\link{binarize_pois}}
+\code{\link{binarize_pois}}, \code{\link{change_form}}
 }
 \author{
 Junkyu Park

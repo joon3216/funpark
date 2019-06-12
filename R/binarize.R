@@ -17,7 +17,7 @@ source('R/pgf.R')
 #' @return A data.table that has the same categorical features as \code{dat},
 #'   and has \code{variable.name} column as its binary response
 #' @author Junkyu Park
-#' @seealso \code{\link{binarize_pois}}
+#' @seealso \code{\link{binarize_pois}}, \code{\link{change_form}}
 #' @examples
 #' # data(rich_binom)
 #' binarize_binom(rich_binom, c('rich', 'not_rich'))
@@ -111,7 +111,7 @@ binarize_binom <- function(dat, responses, variable.name = NULL) {
 #'   based on \code{response}. The function will not keep those combinations
 #'   with a zero count.
 #' @author Junkyu Park
-#' @seealso \code{\link{binarize_binom}}
+#' @seealso \code{\link{binarize_binom}}, \code{\link{change_form}}
 #' @examples
 #' # data(rich_pois)
 #' binarize_pois(rich_pois, 'count')
@@ -175,32 +175,81 @@ binarize_pois <- function(dat, response) {
 
 
 
+#' change_form
+#'
+#' Transform a data from one form into another.
+#'
+#' @usage change_form(dat, from, to,
+#'             old_response, category, new_response)
+#' @param dat A data whose features are categorical and response(s) is/are
+#'   nonnegative integer vector(s).
+#' @param from A character; either 'binary', 'binomial', or 'poisson'
+#' @param to A character != from; either 'binary', 'binomial', or 'poisson'
+#' @param old_response (always specified) a character vector of:
+#'   length 1 if from = 'binary' or 'poisson'; the name of column
+#'   in dat that stores a response/count, or;
+#'   lenght 2 if from = 'binomial'; the names of columns in dat
+#'   that store positive and negative case counts, in this order.
+#' @param category (specified only if to = 'poisson') a character vector of:
+#'   length 1 if from = 'binomial'; the new name of column that
+#'   will store two names in old_response as positive and
+#'   negative cases, in this order, or;
+#'   length 2 if from = 'binary'; the new names for positive and
+#'   negative cases in the binary response column, in this order.
+#' @param new_response (specified only if from != 'poisson') a character
+#'   vector of:
+#'   length 1 if to = 'binary' or 'poisson'; the name of the new
+#'   column in new data that will store either a binary or count
+#'   response, or;
+#'   length 2 if to = 'binomial'; the names of two columns in
+#'   new data that will store positive and negative case counts,
+#'   in this order.
+#' @return A data.table that has transformed from the form specified in
+#'   \code{from} to the form specified in \code{to}.
+#' @author Junkyu Park
+#' @seealso \code{\link{binarize_binom}}, \code{\link{binarize_pois}}
+#' @examples
+#' change_form(
+#'     rich,
+#'     from = 'binary', to = 'binomial',
+#'     old_response = 'is_rich',
+#'     new_response = c('rich', 'not_rich')
+#' )
+#' change_form(
+#'     rich,
+#'     from = 'binary', to = 'poisson',
+#'     old_response = 'is_rich',
+#'     category = c('rich', 'not_rich'),
+#'     new_response = 'count'
+#' )
+#' change_form(
+#'     rich_binom,
+#'     from = 'binomial', to = 'binary',
+#'     old_response = c('rich', 'not_rich'),
+#'     new_response = 'is_rich'
+#' )
+#' change_form(
+#'     rich_binom,
+#'     from = 'binomial', to = 'poisson',
+#'     old_response = c('rich', 'not_rich'),
+#'     category = 'is_rich',
+#'     new_response = 'count'
+#' )
+#' change_form(
+#'     rich_pois,
+#'     from = 'poisson', to = 'binary',
+#'     old_response = 'count'
+#' )
+#' change_form(
+#'     rich_pois,
+#'     from = 'poisson', to = 'binomial',
+#'     old_response = 'count',
+#'     category = 'is_rich'
+#' )
+#' @export
+#' @import data.table
 change_form <- function(dat, from, to,
                         old_response, category, new_response) {
-    # dat: a data with categorical features; a response column/columns
-    #      must be numeric (0 and 1 if from = 'binary', or nonnegative
-    #      integers if from is either 'binomial' or 'poisson').
-    # from: a character; either 'binary', 'binomial', or 'poisson'
-    # to: a character != from; either 'binary', 'binomial', or 'poisson'
-    # old_response: (always specified) a character vector of:
-    #     * length 1 if from = 'binary' or 'poisson'; the name of column
-    #       in dat that stores a response/count
-    #     * lenght 2 if from = 'binomial'; the names of columns in dat
-    #       that store positive and negative case counts, in this order.
-    # category: (specified only if to = 'poisson') a character vector of:
-    #     * length 1 if from = 'binomial'; the new name of column that
-    #       will store two names in old_response as positive and
-    #       negative cases, in this order.
-    #     * length 2 if from = 'binary'; the new names for positive and
-    #       negative cases in the binary response column, in this order.
-    # new_response: (specified only if from != 'poisson') a character
-    #               vector of:
-    #     * length 1 if to = 'binary' or 'poisson'; the name of the new
-    #       column in new data that will store either a binary or count
-    #       response
-    #     * length 2 if to = 'binomial'; the names of two columns in
-    #       new data that will store positive and negative case counts,
-    #       in this order.
 
     if (!('data.table' %in% class(dat))) {data.table::setDT(dat)}
     col_names <- colnames(dat)

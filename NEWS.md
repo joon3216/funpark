@@ -1,4 +1,9 @@
 
+# funpakr 0.2.1
+
+* Added description of `change_form` in binarize.R
+
+
 # funpark 0.2.0
 
 * Added binarize.R

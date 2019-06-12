@@ -2,6 +2,7 @@
 
 export(binarize_binom)
 export(binarize_pois)
+export(change_form)
 export(dpmf)
 export(rpmf)
 import(data.table)
