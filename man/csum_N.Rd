@@ -67,8 +67,9 @@ dX <- function(x) {
 result_X <- csum_N(dX, support = 0:5, lambda = 3)
 }
 \seealso{
-\code{\link{dpmf}}
-  \code{\link{rpmf}}
+\code{\link{dpmf}},
+  \code{\link{rpmf}},
+  \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 }
 \author{
 Junkyu Park

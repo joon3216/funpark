@@ -16,26 +16,32 @@ nonnegative integer vector(s).}
 \item{to}{A character != from; either 'binary', 'binomial', or 'poisson'}
 
 \item{old_response}{(always specified) a character vector of:
-length 1 if from = 'binary' or 'poisson'; the name of column
-in dat that stores a response/count, or;
-lenght 2 if from = 'binomial'; the names of columns in dat
-that store positive and negative case counts, in this order.}
+\itemize{
+  \item length 1 if from = 'binary' or 'poisson'; the name of column
+in dat that stores a response/count.
+  \item lenght 2 if from = 'binomial'; the names of columns in dat
+that store positive and negative case counts, in this order.
+}}
 
 \item{category}{(specified only if to = 'poisson') a character vector of:
-length 1 if from = 'binomial'; the new name of column that
+\itemize{
+  \item length 1 if from = 'binomial'; the new name of column that
 will store two names in old_response as positive and
-negative cases, in this order, or;
-length 2 if from = 'binary'; the new names for positive and
-negative cases in the binary response column, in this order.}
+negative cases, in this order.
+  \item length 2 if from = 'binary'; the new names for positive and
+negative cases in the binary response column, in this order.
+}}
 
 \item{new_response}{(specified only if from != 'poisson') a character
 vector of:
-length 1 if to = 'binary' or 'poisson'; the name of the new
+\itemize{
+  \item length 1 if to = 'binary' or 'poisson'; the name of the new
 column in new data that will store either a binary or count
-response, or;
-length 2 if to = 'binomial'; the names of two columns in
+response.
+  \item length 2 if to = 'binomial'; the names of two columns in
 new data that will store positive and negative case counts,
-in this order.}
+in this order.
+}}
 }
 \value{
 A data.table that has transformed from the form specified in
@@ -84,8 +90,9 @@ change_form(
 )
 }
 \seealso{
-\code{\link{binarize_binom}}
-  \code{\link{binarize_pois}}
+\code{\link{binarize_binom}},
+  \code{\link{binarize_pois}},
+  \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 }
 \author{
 Junkyu Park

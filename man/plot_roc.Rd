@@ -23,9 +23,10 @@ plot_roc(nodal, r ~ stage + xray + acid)
 }
 \seealso{
 \code{\link{binarize_binom}},
-  \code{\link{binarize_pois}}
-  \code{\link{change_form}}
-  \code{\link{CI_auc}}
+  \code{\link{binarize_pois}},
+  \code{\link{change_form}},
+  \code{\link{CI_auc}},
+  \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 }
 \author{
 Junkyu Park

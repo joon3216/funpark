@@ -1,4 +1,9 @@
 
+# funpark 0.2.3
+
+* Added non_separable_penalty.R
+
+
 # funpark 0.2.2
 
 * Edited `roxygen2` comments of functions in `R/` folder.
@@ -20,3 +25,4 @@
 
 * Created R projects on RStudio
 * Added pgf.R
+

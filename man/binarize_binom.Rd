@@ -31,8 +31,9 @@ binarize_binom(rich_binom, c('rich', 'not_rich'))
 binarize_binom(rich_binom, c('rich', 'not_rich'), 'is_rich')
 }
 \seealso{
-\code{\link{binarize_pois}}
-  \code{\link{change_form}}
+\code{\link{binarize_pois}},
+  \code{\link{change_form}},
+  \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 }
 \author{
 Junkyu Park

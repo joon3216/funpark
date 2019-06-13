@@ -27,8 +27,9 @@ Transform a data with a count response into a data with binary response.
 binarize_pois(rich_pois, 'count')
 }
 \seealso{
-\code{\link{binarize_binom}}
-  \code{\link{change_form}}
+\code{\link{binarize_binom}},
+  \code{\link{change_form}},
+  \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 }
 \author{
 Junkyu Park

@@ -31,7 +31,8 @@ dbinom2 <- function(x){dpmf(x, c(.25, .5, .25), 0:2)}
 dbinom2(-2:3)
 }
 \seealso{
-\code{\link{rpmf}}
+\code{\link{rpmf}},
+  \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 }
 \author{
 Junkyu Park

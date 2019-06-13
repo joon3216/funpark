@@ -41,8 +41,9 @@ M <- length(result_X)
 rpmf(12, dpmf, 0:(M - 1), result_X)
 }
 \seealso{
-\code{\link{csum_N}}
-  \code{\link{dpmf}}
+\code{\link{csum_N}},
+  \code{\link{dpmf}},
+  \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 }
 \author{
 Junkyu Park

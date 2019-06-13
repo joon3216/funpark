@@ -31,10 +31,11 @@ femsmoke_binary[, dead := ifelse(dead == 'yes', 1, 0)]
 CI_auc(femsmoke_binary, dead ~ smoker + age)
 }
 \seealso{
-\code{\link{binarize_binom}}
-  \code{\link{binarize_pois}}
-  \code{\link{change_form}}
-  \code{\link{plot_roc}}
+\code{\link{binarize_binom}},
+  \code{\link{binarize_pois}},
+  \code{\link{change_form}},
+  \code{\link{plot_roc}},
+  \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 }
 \author{
 Junkyu Park

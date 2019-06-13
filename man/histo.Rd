@@ -16,7 +16,8 @@ histo(x, dat, bins)
 }
 \description{
 Given one-dimensional data \code{dat} and bins \code{bins}, evaluate the
-histogram function at \code{x}.
+histogram function at \code{x}:
+\deqn{\text{hist}(x) := \sum_{k = 1}^{m} \Big[ \frac{I(x \in B_k)}{n(u_k - u_{k - 1})} \sum_{i = 1}^{n} I(x_i \in B_k) \Big]}
 }
 \examples{
 # Example: dX in csum_N
@@ -29,9 +30,10 @@ samples_N <- rpmf(10000, dpmf, 0:(M - 1), result_X)
 histo(0:(M - 1), samples_N, seq(-.5, M - .5, by = 1))
 }
 \seealso{
-\code{\link{csum_N}}
-  \code{\link{dpmf}}
-  \code{\link{rpmf}}
+\code{\link{csum_N}},
+  \code{\link{dpmf}},
+  \code{\link{rpmf}},
+  \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 }
 \author{
 Junkyu Park

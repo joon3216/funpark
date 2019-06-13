@@ -17,8 +17,9 @@
 #'   and has \code{variable.name} column as its binary response
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{binarize_pois}}
-#'   \code{\link{change_form}}
+#'   \code{\link{binarize_pois}},
+#'   \code{\link{change_form}},
+#'   \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 #' @examples
 #' # data(rich_binom)
 #' binarize_binom(rich_binom, c('rich', 'not_rich'))
@@ -113,8 +114,9 @@ binarize_binom <- function(dat, responses, variable.name = NULL) {
 #'   with a zero count.
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{binarize_binom}}
-#'   \code{\link{change_form}}
+#'   \code{\link{binarize_binom}},
+#'   \code{\link{change_form}},
+#'   \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 #' @examples
 #' # data(rich_pois)
 #' binarize_pois(rich_pois, 'count')
@@ -189,30 +191,37 @@ binarize_pois <- function(dat, response) {
 #' @param from A character; either 'binary', 'binomial', or 'poisson'
 #' @param to A character != from; either 'binary', 'binomial', or 'poisson'
 #' @param old_response (always specified) a character vector of:
-#'   length 1 if from = 'binary' or 'poisson'; the name of column
-#'   in dat that stores a response/count, or;
-#'   lenght 2 if from = 'binomial'; the names of columns in dat
+#'   \itemize{
+#'     \item length 1 if from = 'binary' or 'poisson'; the name of column
+#'   in dat that stores a response/count.
+#'     \item lenght 2 if from = 'binomial'; the names of columns in dat
 #'   that store positive and negative case counts, in this order.
+#'   }
 #' @param category (specified only if to = 'poisson') a character vector of:
-#'   length 1 if from = 'binomial'; the new name of column that
+#'   \itemize{
+#'     \item length 1 if from = 'binomial'; the new name of column that
 #'   will store two names in old_response as positive and
-#'   negative cases, in this order, or;
-#'   length 2 if from = 'binary'; the new names for positive and
+#'   negative cases, in this order.
+#'     \item length 2 if from = 'binary'; the new names for positive and
 #'   negative cases in the binary response column, in this order.
+#'   }
 #' @param new_response (specified only if from != 'poisson') a character
 #'   vector of:
-#'   length 1 if to = 'binary' or 'poisson'; the name of the new
+#'   \itemize{
+#'     \item length 1 if to = 'binary' or 'poisson'; the name of the new
 #'   column in new data that will store either a binary or count
-#'   response, or;
-#'   length 2 if to = 'binomial'; the names of two columns in
+#'   response.
+#'     \item length 2 if to = 'binomial'; the names of two columns in
 #'   new data that will store positive and negative case counts,
 #'   in this order.
+#'   }
 #' @return A data.table that has transformed from the form specified in
 #'   \code{from} to the form specified in \code{to}.
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{binarize_binom}}
-#'   \code{\link{binarize_pois}}
+#'   \code{\link{binarize_binom}},
+#'   \code{\link{binarize_pois}},
+#'   \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 #' @examples
 #' change_form(
 #'     rich,
@@ -340,10 +349,11 @@ change_form <- function(dat, from, to,
 #' @return A \code{bootci} object.
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{binarize_binom}}
-#'   \code{\link{binarize_pois}}
-#'   \code{\link{change_form}}
-#'   \code{\link{plot_roc}}
+#'   \code{\link{binarize_binom}},
+#'   \code{\link{binarize_pois}},
+#'   \code{\link{change_form}},
+#'   \code{\link{plot_roc}},
+#'   \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 #' @examples
 #' # library(data.table)
 #' data(femsmoke, package = 'faraway')
@@ -378,9 +388,10 @@ CI_auc <- function(dat, fmlr, R = 500, type = 'norm', ...) {
 #' @author Junkyu Park
 #' @seealso
 #'   \code{\link{binarize_binom}},
-#'   \code{\link{binarize_pois}}
-#'   \code{\link{change_form}}
-#'   \code{\link{CI_auc}}
+#'   \code{\link{binarize_pois}},
+#'   \code{\link{change_form}},
+#'   \code{\link{CI_auc}},
+#'   \href{https://joon3216.github.io/research_materials/2018/binarize}{Binarizing data using data.table}
 #' @examples
 #' # data(nodal, package = 'SMPracticals')
 #' plot_roc(nodal, r ~ stage + xray + acid)

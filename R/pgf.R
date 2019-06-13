@@ -20,8 +20,9 @@
 #' @param eps A number in (0, 1); \code{1e-05} by default
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{dpmf}}
-#'   \code{\link{rpmf}}
+#'   \code{\link{dpmf}},
+#'   \code{\link{rpmf}},
+#'   \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 #' @examples
 #' # Example 1: S_Y = sum of iid Y_i's, Y_i ~ dY
 #' dY <- function(y) {
@@ -97,7 +98,8 @@ csum_N <- function(pmf, support, lambda, eps = 1e-05) {
 #'   \code{0:(length(pmf_vec) - 1)}.
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{rpmf}}
+#'   \code{\link{rpmf}},
+#'   \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 #' @examples
 #' # Example 1: dfruit
 #' dfruit <- function(x){
@@ -133,7 +135,8 @@ dpmf <- function(x, pmf_vec, support_vec) {
 #' histo
 #'
 #' Given one-dimensional data \code{dat} and bins \code{bins}, evaluate the
-#' histogram function at \code{x}.
+#' histogram function at \code{x}:
+#' \deqn{\text{hist}(x) := \sum_{k = 1}^{m} \Big[ \frac{I(x \in B_k)}{n(u_k - u_{k - 1})} \sum_{i = 1}^{n} I(x_i \in B_k) \Big]}
 #'
 #' @usage histo(x, dat, bins)
 #' @param x A number, or vector of numbers.
@@ -142,9 +145,10 @@ dpmf <- function(x, pmf_vec, support_vec) {
 #'   \code{max(bins) > max(dat)}.
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{csum_N}}
-#'   \code{\link{dpmf}}
-#'   \code{\link{rpmf}}
+#'   \code{\link{csum_N}},
+#'   \code{\link{dpmf}},
+#'   \code{\link{rpmf}},
+#'   \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 #' @examples
 #' # Example: dX in csum_N
 #' # Evaluate the histogram of 10000 samples of S = sum of iid X_i ~ dX
@@ -216,8 +220,9 @@ histo <- function(x, dat, bins) {
 #' @param \dots An additional argument of \code{pmf}
 #' @author Junkyu Park
 #' @seealso
-#'   \code{\link{csum_N}}
-#'   \code{\link{dpmf}}
+#'   \code{\link{csum_N}},
+#'   \code{\link{dpmf}},
+#'   \href{https://joon3216.github.io/research_materials/2018/pgf}{Evaluating a hard-to-evaluate pmf using pgf and DFT}
 #' @examples
 #' # Example 1: dfruit in dpmf example
 #' # Generate 12 random samples from dfruit
