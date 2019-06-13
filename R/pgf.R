@@ -160,10 +160,6 @@ dpmf <- function(x, pmf_vec, support_vec) {
 #' histo(0:(M - 1), samples_N, seq(-.5, M - .5, by = 1))
 #' @export
 histo <- function(x, dat, bins) {
-    # x: a number, or vector of numbers
-    # dat: a vector of numbers
-    # bins: a vector of numbers where min(bins) <= min(dat) and
-    #       max(bins) > max(dat)
 
     bins <- sort(bins)
     n <- length(dat)

@@ -29,8 +29,6 @@
 #' result <- simulate_na(X_truth, na_rate = .4)
 #' @export
 simulate_na <- function(X_complete, na_rate) {
-    # X_complete: a data frame or a matrix with no NA's
-    # na_rate: a number in (0, 1)
 
     # Create C matrix; entry is FALSE if missing, and TRUE if observed
     nr <- nrow(X_complete); nc <- ncol(X_complete)
@@ -93,9 +91,6 @@ simulate_na <- function(X_complete, na_rate) {
 #' result_imputed <- impute_em(result$X)
 #' @export
 impute_em <- function(X, max_iter = 3000, eps = 1e-08) {
-    # X: a data frame or a matrix, possibly with some NA's
-    # max_iter: a natural number; 3000 by default
-    # eps: a positive real number; 1e-08 by default
 
     nr <- nrow(X)
     nc <- ncol(X)

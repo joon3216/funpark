@@ -1,7 +1,7 @@
 Package: funpark
 Type: Package
 Title: Functions written by Junkyu Park
-Version: 0.2.4
+Version: 0.2.5
 Author: Junkyu Park [aut, cre]
 Maintainer: Junkyu Park <joon3216@gmail.com>
 Description: Collection of functions for composing research materials.

@@ -1,4 +1,8 @@
 
+# funpark 0.2.5
+
+* Added cross_validation_fs.R
+
 # funpark 0.2.4
 
 * Added em_imputation.R
