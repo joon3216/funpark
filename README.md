@@ -28,3 +28,4 @@ Currently, functions written in the following sections are included:
 -   [Binarizing data using `data.table` in R](https://joon3216.github.io/research_materials/2018/binarize)
 -   [Dealing with a non-separable penalty](https://joon3216.github.io/research_materials/2018/non_separable_penalty)
 -   [Evaluating a hard-to-evaluate pmf using pgf and DFT](https://joon3216.github.io/research_materials/2018/pgf)
+-   [Imputing missing data using EM algorithm](https://joon3216.github.io/research_materials/2019/em_imputation)
