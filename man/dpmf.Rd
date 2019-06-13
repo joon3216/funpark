@@ -9,16 +9,22 @@ dpmf(x, pmf_vec, support_vec)
 \arguments{
 \item{x}{A number, or a vector whose class is the same as \code{support_vec}}
 
-\item{pmf_vec}{A numeric vector, where each element falls in [0, 1] and sums up to 1}
+\item{pmf_vec}{A numeric vector, where each element falls in [0, 1] and
+sums up to 1}
 
-\item{support_vec}{A vector with the same length as \code{pmf_vec} where each entry of \code{support_vec} is the input that corresponds to the probability in \code{pmf_vec}; if missing, it is replaced with \code{0:(length(pmf_vec) - 1)}.}
+\item{support_vec}{A vector with the same length as \code{pmf_vec} where
+each entry of \code{support_vec} is the input that corresponds to the
+probability in \code{pmf_vec}; if missing, it is replaced with
+\code{0:(length(pmf_vec) - 1)}.}
 }
 \description{
 Create a probbility mass function.
 }
 \examples{
 # Example 1: dfruit
-dfruit <- function(x){dpmf(x, c(.25, .4, .35), c('apple', 'orange', 'neither'))}
+dfruit <- function(x){
+    unname(dpmf(x, c(.25, .4, .35), c('apple', 'orange', 'neither')))
+}
 dfruit(c('apple', 'neither', 'pineapple'))
 # Example 2: dbinom with size = 2 and prob = .5
 dbinom2 <- function(x){dpmf(x, c(.25, .5, .25), 0:2)}

@@ -1,5 +1,4 @@
 
-source('R/pgf.R')
 
 #' binarize_binom
 #'
@@ -17,7 +16,9 @@ source('R/pgf.R')
 #' @return A data.table that has the same categorical features as \code{dat},
 #'   and has \code{variable.name} column as its binary response
 #' @author Junkyu Park
-#' @seealso \code{\link{binarize_pois}}, \code{\link{change_form}}
+#' @seealso
+#'   \code{\link{binarize_pois}}
+#'   \code{\link{change_form}}
 #' @examples
 #' # data(rich_binom)
 #' binarize_binom(rich_binom, c('rich', 'not_rich'))
@@ -111,7 +112,9 @@ binarize_binom <- function(dat, responses, variable.name = NULL) {
 #'   based on \code{response}. The function will not keep those combinations
 #'   with a zero count.
 #' @author Junkyu Park
-#' @seealso \code{\link{binarize_binom}}, \code{\link{change_form}}
+#' @seealso
+#'   \code{\link{binarize_binom}}
+#'   \code{\link{change_form}}
 #' @examples
 #' # data(rich_pois)
 #' binarize_pois(rich_pois, 'count')
@@ -207,7 +210,9 @@ binarize_pois <- function(dat, response) {
 #' @return A data.table that has transformed from the form specified in
 #'   \code{from} to the form specified in \code{to}.
 #' @author Junkyu Park
-#' @seealso \code{\link{binarize_binom}}, \code{\link{binarize_pois}}
+#' @seealso
+#'   \code{\link{binarize_binom}}
+#'   \code{\link{binarize_pois}}
 #' @examples
 #' change_form(
 #'     rich,
@@ -318,4 +323,105 @@ change_form <- function(dat, from, to,
             ' \"binary\", \"binomial\", or \"poisson\"'
         ))
     }
+}
+
+
+
+#' CI_auc
+#'
+#' Calculate a confidence interval of AUC by bootstrapping.
+#'
+#' @usage CI_auc(dat, fmlr, R = 500, type = 'norm', ...)
+#' @param dat A data whose response is binary (0 and 1).
+#' @param fmlr A formula for the logistic regression with logit link.
+#' @param R The same as \code{R} in boot::boot.
+#' @param type The same as \code{type} in boot::boot.ci
+#' @param \dots Additional arguments of boot::boot.ci
+#' @return A \code{bootci} object.
+#' @author Junkyu Park
+#' @seealso
+#'   \code{\link{binarize_binom}}
+#'   \code{\link{binarize_pois}}
+#'   \code{\link{change_form}}
+#'   \code{\link{plot_roc}}
+#' @examples
+#' # library(data.table)
+#' data(femsmoke, package = 'faraway')
+#' femsmoke_binary <- binarize_pois(femsmoke, 'y')
+#' femsmoke_binary[, dead := ifelse(dead == 'yes', 1, 0)]
+#' CI_auc(femsmoke_binary, dead ~ smoker + age)
+#' @export
+CI_auc <- function(dat, fmlr, R = 500, type = 'norm', ...) {
+
+    AUC_boot <- function(dat, i) {
+        y <- dat[i, ]
+        mod <- glm(fmlr, family = binomial, data = y)
+        ests <- predict(mod, type = 'response')
+        response <- as.character(fmlr[2])
+        actual <- eval(parse(text = paste0('y$\"', response, '\"')))
+        suppressMessages(as.numeric(pROC::auc(pROC::roc(actual, ests))))
+    }
+    boot_output <- boot::boot(dat, statistic = AUC_boot, R = R)
+    boot::boot.ci(boot_output, type = type, ...)
+}
+
+
+
+#' plot_roc
+#'
+#' Plot the ROC curve of the logistic regression with logit link.
+#'
+#' @usage plot_roc(dat, fmlr)
+#' @param dat A data whose response is binary (0 and 1).
+#' @param fmlr A formula for the logistic regression with logit link.
+#' @return A \code{ggplot} object.
+#' @author Junkyu Park
+#' @seealso
+#'   \code{\link{binarize_binom}},
+#'   \code{\link{binarize_pois}}
+#'   \code{\link{change_form}}
+#'   \code{\link{CI_auc}}
+#' @examples
+#' # data(nodal, package = 'SMPracticals')
+#' plot_roc(nodal, r ~ stage + xray + acid)
+#' @export
+#' @import ggplot2
+plot_roc <- function(dat, fmlr) {
+
+    mod <- glm(formula = fmlr, family = binomial, data = dat)
+    ests <- predict(mod, type = 'response')
+    response <- as.character(fmlr[2])
+    actual <- eval(parse(text = paste0('dat$\"', response, '\"')))
+    roc_result <- pROC::roc(actual, ests)
+    roc_table <- data.table::data.table(
+        TPR = roc_result$sensitivities,
+        FPR = 1 - roc_result$specificities,
+        thresholds = roc_result$thresholds
+    )[
+        order(TPR)
+    ]
+    ggplot(roc_table, aes(FPR, TPR, label = round(thresholds, 4))) +
+        geom_point() +
+        ggrepel::geom_label_repel(
+            box.padding = 0.3,
+            point.padding = 0.3,
+            segment.color = "grey50"
+        ) +
+        geom_line() +
+        geom_segment(
+            aes(x = 0, y = 0, xend = 1, yend = 1),
+            col = "red", linetype = "dashed"
+        ) +
+        annotate(
+            "text", x = 1, y = .05, hjust = 1,
+            label = paste0(
+                "AUC : ", round(as.numeric(pROC::auc(roc_result)), 4)
+            )
+        ) +
+        labs(
+            x = "False positive rate",
+            y = "True positive rate",
+            title = "ROC curve",
+            subtitle = paste0(response, " ~ ", as.character(fmlr[3]))
+        )
 }

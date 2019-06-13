@@ -84,7 +84,8 @@ change_form(
 )
 }
 \seealso{
-\code{\link{binarize_binom}}, \code{\link{binarize_pois}}
+\code{\link{binarize_binom}}
+  \code{\link{binarize_pois}}
 }
 \author{
 Junkyu Park

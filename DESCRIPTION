@@ -1,8 +1,8 @@
 Package: funpark
 Type: Package
 Title: Functions written by Junkyu Park
-Version: 0.2.1
-Author: Junkyu Park
+Version: 0.2.2
+Author: Junkyu Park [aut, cre]
 Maintainer: Junkyu Park <joon3216@gmail.com>
 Description: Collection of functions for composing research materials.
 License: MIT License
@@ -11,5 +11,9 @@ BugReports: https://github.com/joon3216/funpark/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
-    data.table (>= 1.9.6)
+    boot,
+    data.table (>= 1.9.6),
+    ggplot2,
+    ggrepel,
+    pROC
 RoxygenNote: 6.1.1

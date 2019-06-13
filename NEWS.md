@@ -1,5 +1,10 @@
 
-# funpakr 0.2.1
+# funpark 0.2.2
+
+* Edited `roxygen2` comments of functions in `R/` folder.
+
+
+# funpark 0.2.1
 
 * Added description of `change_form` in binarize.R
 

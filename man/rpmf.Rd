@@ -9,9 +9,17 @@ rpmf(n, pmf, support, ...)
 \arguments{
 \item{n}{An integer >= 1.}
 
-\item{pmf}{A probability mass function which takes elements of an ambient space of pmf's support (i.e. an input that makes pmf return a probability) in its first argument. This pmf has a finite \code{support}, and must be able to take an array of elements and return an array of probabilities. Each output of this \code{pmf} must fall in [0, 1], and every conceivable output, including 0, must sum up to 1.}
+\item{pmf}{A probability mass function which takes elements of an ambient
+space of pmf's support (i.e. an input that makes pmf return a probability)
+in its first argument. This pmf has a finite \code{support}, and must be
+able to take an array of elements and return an array of probabilities.
+Each output of this \code{pmf} must fall in [0, 1], and every conceivable
+output, including 0, must sum up to 1, i.e. if an object that is not
+an element of \code{support} is given, \code{pmf} must return 0.}
 
-\item{support}{A vector which consists of the elements of the support of \code{pmf}, i.e. \code{sum(pmf(support, ...)) == 1 && !(0 \%in\% pmf(support, ...))}}
+\item{support}{A vector which consists of the elements of the support
+of \code{pmf}, i.e. \code{sum(pmf(support, ...)) == 1 &&
+!(0 \%in\% pmf(support, ...))}}
 
 \item{\dots}{An additional argument of \code{pmf}}
 }
@@ -19,12 +27,22 @@ rpmf(n, pmf, support, ...)
 Draw random samples from a probability mass function using the \href{https://en.wikipedia.org/wiki/Inverse_transform_sampling}{inverse transform sampling}.
 }
 \examples{
-# Example: dfruit in dpmf example
+# Example 1: dfruit in dpmf example
 # Generate 12 random samples from dfruit
 rpmf(12, dfruit, c('apple', 'orange', 'neither'))
+# Example 2: dX in csum_N example
+# Generate 20 samples of X_i ~ dX
+rpmf(20, dX, 0:5)
+# Example 3: S = sum of iid X_i's, i = 1, ..., N,
+# where N ~ Pois(3) and N independent of all X_i ~ dX (in Example 2)
+# Generate 12 samples of S
+result_X <- csum_N(dX, support = 0:5, lambda = 3)
+M <- length(result_X)
+rpmf(12, dpmf, 0:(M - 1), result_X)
 }
 \seealso{
-\code{\link{dpmf}}
+\code{\link{csum_N}}
+  \code{\link{dpmf}}
 }
 \author{
 Junkyu Park
