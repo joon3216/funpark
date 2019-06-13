@@ -1,4 +1,8 @@
 
+# funpark 0.2.4
+
+* Added em_imputation.R
+
 # funpark 0.2.3
 
 * Added non_separable_penalty.R
