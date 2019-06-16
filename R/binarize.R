@@ -18,8 +18,9 @@
 #' @export
 random_word <- function(n) {
 
-    # data(alphabets, package = 'funpark')
-    all_alphabets <- sort(c(alphabets$upper, alphabets$lower))
+    all_alphabets <- sort(
+        c(funpark::alphabets$upper, funpark::alphabets$lower)
+    )
     dalphabet <- function(x){
         dpmf(
             x,
@@ -70,7 +71,7 @@ binarize_binom <- function(dat, responses, variable.name = NULL) {
     id_vars <- col_names[!(col_names %in% responses)]
     if (is.null(variable.name)) {
         variable_name <- random_word(10)
-        message('Randomly generated variable name used: ', variable_name)
+        message('Randomly generated variable.name used: ', variable_name)
     } else {
         variable_name <- variable.name
     }
