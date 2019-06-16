@@ -3,6 +3,21 @@
 usethis::use_data("DATASET")
 library(data.table)
 
+# alphabets
+all_alphabets <- c(
+    'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f',
+    'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l',
+    'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r',
+    'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x',
+    'Y', 'y', 'Z', 'z'
+)
+alphabets <- as.data.frame(matrix(all_alphabets, ncol = 2, byrow = T))
+colnames(alphabets) <- c('upper', 'lower')
+alphabets <- transform(
+    alphabets,
+    upper = as.character(upper),
+    lower = as.character(lower)
+)
 
 # rich
 set.seed(1024)

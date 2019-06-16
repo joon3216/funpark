@@ -1,4 +1,23 @@
 
+#' alphabets
+#'
+#' Collection of all English alphabets, both lowercases and uppercases.
+#'
+#' @docType data
+#' @usage data(alphabets)
+#' @format A data.frame with 26 rows and 2 variables:
+#' \describe{
+#'     \item{upper}{<chr> uppercase letters}
+#'     \item{lower}{<chr> lowercase letters}
+#' }
+#' @keywords datasets
+#' @examples
+#' data(alphabets)
+#' all_alphabets <- sort(c(alphabets$upper, alphabets$lower))
+"alphabets"
+
+
+
 #' rich dataset
 #'
 #' A sample dataset to test functions. This dataset has a binary response.

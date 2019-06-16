@@ -1,4 +1,9 @@
 
+# funpark 0.2.6
+
+* Pulled out `dalphabet` from binarize_* functions in binarize.R
+
+
 # funpark 0.2.5
 
 * Added cross_validation_fs.R

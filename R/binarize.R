@@ -1,4 +1,19 @@
 
+random_word <- function(n) {
+
+    # data(alphabets, package = 'funpark')
+    all_alphabets <- sort(c(alphabets$upper, alphabets$lower))
+    dalphabet <- function(x){
+        dpmf(
+            x,
+            rep(1, length(all_alphabets)) / length(all_alphabets),
+            all_alphabets
+        )
+    }
+    paste0(rpmf(n, dalphabet, all_alphabets), collapse = '')
+}
+
+
 
 #' binarize_binom
 #'
@@ -29,38 +44,20 @@
 binarize_binom <- function(dat, responses, variable.name = NULL) {
 
     # Generate random names to avoid the same names as in features
-    all_alphabets <- c(
-        'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f',
-        'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l',
-        'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r',
-        'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x',
-        'Y', 'y', 'Z', 'z'
-    )
-    dalphabet <- function(x){
-        dpmf(
-            x,
-            rep(1, length(all_alphabets)) / length(all_alphabets),
-            all_alphabets
-        )
-    }
-    separator <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
-    united <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
+    separator <- random_word(10)
+    united <- random_word(10)
 
     # Setup
     if (!('data.table' %in% class(dat))) {data.table::setDT(dat)}
     col_names <- colnames(dat)
     id_vars <- col_names[!(col_names %in% responses)]
     if (is.null(variable.name)) {
-        variable_name <-
-            paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
+        variable_name <- random_word(10)
         message('Randomly generated variable name used: ', variable_name)
     } else {
         variable_name <- variable.name
     }
-    value_name <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
+    value_name <- random_word(10)
 
     # Transform into the form that is used in poisson regression
     dat <- data.table::melt(
@@ -125,33 +122,15 @@ binarize_binom <- function(dat, responses, variable.name = NULL) {
 binarize_pois <- function(dat, response) {
 
     # Generate random names to avoid the same names as in features
-    all_alphabets <- c(
-        'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f',
-        'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l',
-        'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r',
-        'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x',
-        'Y', 'y', 'Z', 'z'
-    )
-    dalphabet <- function(x){
-        dpmf(
-            x,
-            rep(1, length(all_alphabets)) / length(all_alphabets),
-            all_alphabets
-        )
-    }
-    separator <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
-    united <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
+    separator <- random_word(10)
+    united <- random_word(10)
 
     # Setup
     if (!('data.table' %in% class(dat))) {setDT(dat)}
     col_names <- colnames(dat)
     id_vars <- col_names[!(col_names %in% response)]
-    variable_name <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
-    value_name <-
-        paste0(rpmf(10, dalphabet, all_alphabets), collapse = '')
+    variable_name <- random_word(10)
+    value_name <- random_word(10)
 
     # Binarize
     dat <- eval(parse(text = paste0(
