@@ -190,15 +190,19 @@ binarize_pois <- function(dat, response) {
 #' @param old_response (always specified) a character vector of:
 #'   \itemize{
 #'     \item length 1 if from = 'binary' or 'poisson'; the name of column
-#'   in dat that stores a response/count.
-#'     \item lenght 2 if from = 'binomial'; the names of columns in dat
+#'   in \code{dat} that stores a response/count.
+#'     \item lenght 2 if from = 'binomial'; the names of columns in \code{dat}
 #'   that store positive and negative case counts, in this order.
 #'   }
-#' @param category (specified only if to = 'poisson') a character vector of:
+#' @param category (specified if either to = 'poisson' or
+#'   (from, to) = ('poisson', 'binomial')) a character vector of:
 #'   \itemize{
-#'     \item length 1 if from = 'binomial'; the new name of column that
+#'     \item length 1 if from = 'binomial' OR (from, to) =
+#'   ('poisson', 'binomial'); the new name of column that
 #'   will store two names in old_response as positive and
-#'   negative cases, in this order.
+#'   negative cases, in this order; OR, the column in \code{dat} that is
+#'   used as a binary response in case of logistic regression if
+#'   (from, to) = ('poisson', 'binomial').
 #'     \item length 2 if from = 'binary'; the new names for positive and
 #'   negative cases in the binary response column, in this order.
 #'   }
