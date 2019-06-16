@@ -31,15 +31,28 @@ devtools::install_github("joon3216/funpark")
 ```
 
 
-## Example
+## Examples
 
-Currently, functions written in the following sections are included:
+There are two themes involved in this package:
 
-* [Binarizing data using `data.table` in R](https://joon3216.github.io/research_materials/2018/binarize)
-* [Cross-validation for fusion estimates](https://joon3216.github.io/research_materials/2019/cross_validation_fs)
-* [Dealing with a non-separable penalty](https://joon3216.github.io/research_materials/2018/non_separable_penalty)
-* [Evaluating a hard-to-evaluate pmf using pgf and DFT](https://joon3216.github.io/research_materials/2018/pgf)
-* [Imputing missing data using EM algorithm](https://joon3216.github.io/research_materials/2019/em_imputation)
+## Response column(s) transformation
+
+See examples of:
+
+* transformations:
+    + [`binarize_binom()`](https://joon3216.github.io/research_materials/2018/binarize#case-1-nodal)
+    + [`binarize_pois()`](https://joon3216.github.io/research_materials/2018/binarize#case-2-femsmoke)
+    + [`change_form()`](https://joon3216.github.io/research_materials/2018/binarize#aside-change_form)
+* applications regarding ROC curves: 
+    + [`plot_roc()`](https://joon3216.github.io/research_materials/2018/binarize#roc-curve)
+    + [`CI_auc()`](https://joon3216.github.io/research_materials/2018/binarize#confidence-interval-for-auc)
+
+
+## Statistical computations
+
+* [`fusion_estimates()`](https://joon3216.github.io/research_materials/2018/non_separable_penalty#the-data), and searching for the best tuning parameter using [k-fold cross-validation](https://joon3216.github.io/research_materials/2019/cross_validation_fs)
+* [using pgf and DFT](https://joon3216.github.io/research_materials/2018/pgf) to evaluate complicated pmfs
+* imputing missing numerical data using the [EM algorithm](https://joon3216.github.io/research_materials/2019/em_imputation)
 
 
 
