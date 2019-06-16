@@ -24,8 +24,7 @@ Examples
 
 There are two themes involved in this package:
 
-Response column(s) transformation
----------------------------------
+### Response column(s) transformation
 
 See examples of:
 
@@ -37,8 +36,7 @@ See examples of:
     -   [`plot_roc()`](https://joon3216.github.io/research_materials/2018/binarize#roc-curve)
     -   [`CI_auc()`](https://joon3216.github.io/research_materials/2018/binarize#confidence-interval-for-auc)
 
-Statistical computations
-------------------------
+### Statistical computations
 
 -   [`fusion_estimates()`](https://joon3216.github.io/research_materials/2018/non_separable_penalty#the-data), and searching for the best tuning parameter using [k-fold cross-validation](https://joon3216.github.io/research_materials/2019/cross_validation_fs)
 -   [using pgf and DFT](https://joon3216.github.io/research_materials/2018/pgf) to evaluate complicated pmfs
