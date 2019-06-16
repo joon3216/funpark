@@ -1,6 +1,7 @@
 
 # funpark 0.2.6
 
+* Created `random_word()` function in binarize.R
 * Pulled out `dalphabet` from binarize_* functions in binarize.R
 
 

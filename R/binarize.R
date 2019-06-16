@@ -1,4 +1,21 @@
 
+#' random_word
+#'
+#' Generate a random combination of English alphabets of length \code{n}.
+#'
+#' @usage random_word(n)
+#' @param n A natural number. This is the number of characters in a generated
+#'   word.
+#' @return A character having \code{n} characters.
+#' @author Junkyu Park
+#' @seealso
+#'   \code{\link{binarize_binom}},
+#'   \code{\link{binarize_pois}}
+#' @examples
+#' set.seed(1024)
+#' random_word(5)
+#' random_word(10)
+#' @export
 random_word <- function(n) {
 
     # data(alphabets, package = 'funpark')
