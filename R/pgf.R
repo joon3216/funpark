@@ -86,7 +86,7 @@ csum_N <- function(pmf, support, lambda, eps = 1e-05) {
 
 #' dpmf
 #'
-#' Create a probbility mass function.
+#' Create a probability mass function.
 #'
 #' @usage dpmf(x, pmf_vec, support_vec)
 #' @param x A number, or a vector whose class is the same as \code{support_vec}

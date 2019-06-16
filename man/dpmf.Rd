@@ -18,7 +18,7 @@ probability in \code{pmf_vec}; if missing, it is replaced with
 \code{0:(length(pmf_vec) - 1)}.}
 }
 \description{
-Create a probbility mass function.
+Create a probability mass function.
 }
 \examples{
 # Example 1: dfruit
