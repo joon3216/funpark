@@ -24,11 +24,11 @@ Examples
 
 There are two themes involved in this package:
 
-### Response column(s) transformation
+### Response column(s) reshaping
 
 See examples of:
 
--   transformations:
+-   reshaping:
     -   [`binarize_binom()`](https://joon3216.github.io/research_materials/2018/binarize#case-1-nodal)
     -   [`binarize_pois()`](https://joon3216.github.io/research_materials/2018/binarize#case-2-femsmoke)
     -   [`change_form()`](https://joon3216.github.io/research_materials/2018/binarize#aside-change_form)
